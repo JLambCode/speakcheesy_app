@@ -10,6 +10,7 @@ import 'pages/menu.dart';
 import 'pages/schedule.dart';
 import 'pages/member.dart';
 
+final controller = PageController(initialPage: 0);
 void main() => runApp(const MainApp());
 
 class MainApp extends StatelessWidget {
@@ -50,10 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
   static const List<Widget> _pages = <Widget>[
     LandingPage(),
     MenuPage(),
-    SchedulePage(),
     RewardsPage(),
-    MemberPage(),
+    SchedulePage(),
     LocationPage(),
+    MemberPage(),
   ];
 
   void handleScreenChanged(int selectedScreen) {
@@ -76,12 +77,16 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             IconButton(
                 onPressed: () {
-                  handleScreenChanged(5);
+                  controller.animateToPage(4,
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.fastOutSlowIn);
                 },
                 icon: const Icon(Icons.location_on_rounded)),
             IconButton(
               onPressed: () {
-                handleScreenChanged(4);
+                controller.animateToPage(5,
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.fastOutSlowIn);
               },
               icon: const Icon(Icons.account_circle),
             )
@@ -98,7 +103,9 @@ class _HomeScreenState extends State<HomeScreen> {
             gap: 8,
             tabBorderRadius: 2,
             onTabChange: (index) {
-              handleScreenChanged(index);
+              controller.animateToPage(index,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.fastOutSlowIn);
             },
             tabs: const [
               GButton(
@@ -121,12 +128,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: _pages[screenIndex],
-        ),
-      ),
+      body: PageView(
+          controller: controller,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            LandingPage(),
+            MenuPage(),
+            RewardsPage(),
+            SchedulePage(),
+            LocationPage(),
+            MemberPage()
+          ]),
     );
   }
 }
