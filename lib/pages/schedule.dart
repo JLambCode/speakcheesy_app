@@ -97,8 +97,19 @@ class _SchedulePageState extends State<SchedulePage> {
           eventLoader: _getEventsForDay,
           startingDayOfWeek: StartingDayOfWeek.monday,
           calendarStyle: CalendarStyle(
-            // Use `CalendarStyle` to customize the UI
-            outsideDaysVisible: false,
+            weekNumberTextStyle: TextStyle(color: Colors.white),
+            weekendTextStyle: TextStyle(color: Colors.white),
+            selectedTextStyle: TextStyle(color: Colors.black),
+            selectedDecoration:
+                BoxDecoration(color: Colors.amber, shape: BoxShape.circle),
+            todayTextStyle: TextStyle(color: Colors.black),
+            todayDecoration: BoxDecoration(
+                color: Colors.amber.shade600, shape: BoxShape.circle),
+            markersMaxCount: 3,
+            canMarkersOverflow: false,
+            markerDecoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(2)),
+            outsideDaysVisible: true,
           ),
           onDaySelected: _onDaySelected,
           onRangeSelected: _onRangeSelected,

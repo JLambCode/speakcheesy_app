@@ -19,10 +19,21 @@ class FoodTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            food.name,
-            style: GoogleFonts.poiretOne(
-                fontSize: 30, fontWeight: FontWeight.bold),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                food.name,
+                style: GoogleFonts.poiretOne(
+                    fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              Text('\$ ${food.price}',
+                  style: GoogleFonts.poppins(
+                    color: Colors.amber.shade600,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ))
+            ],
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -42,28 +53,11 @@ class FoodTile extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               food.description,
-              style: GoogleFonts.poiretOne(
+              style: GoogleFonts.merriweather(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
               softWrap: true,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: SizedBox(
-              width: 160,
-              child: Row(
-                children: [
-                  Text(
-                    '\$ ${food.price}',
-                    style: GoogleFonts.poiretOne(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  )
-                ],
-              ),
             ),
           ),
         ],

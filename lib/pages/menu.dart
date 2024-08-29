@@ -60,14 +60,14 @@ class _MenuPageState extends State<MenuPage> {
     Food(
         name: 'The Lounge Lizard',
         description:
-            'A jalapeno popper inspired grilled cheese sandwich, filled with a spicy cream cheese spread, jalapenos, and pepper-jack cheese. Served with your choice of ranch or raspberry jam for dipping.',
+            'Spicy cream cheese spread, jalapenos and pepper-jack cheese on Texas toast. Served with a side of homemade ranch or blackberry sauce.',
         price: '8',
         options: Option(name: 'Bacon', price: '2'),
         imagePath: 'lib/images/loungelizard.png'),
     Food(
         name: 'The Newsie',
         description:
-            "The Newsie is our kid's meal option. It comes with an American cheese grilled cheese, choice of Lays potato chips or applesauce, and a juice box.",
+            "The Newsie is our kid's meal option. It comes with an American grilled cheese, choice of Lays potato chips or applesauce, and a juice box.",
         price: '6',
         imagePath: 'lib/images/newsie.png')
   ];
@@ -82,7 +82,7 @@ class _MenuPageState extends State<MenuPage> {
     Food(
         name: 'Deep River Kettle Chips',
         description:
-            'No artificial flavors, colors, or preservatives, certified Gluten-Free; Non-GMO Ingredients; produced in a nut-free facility. Mesquite BBQ Spicy Pickle Black Truffle Zesty Jalapeno Black Pepper/Sea Salt',
+            'Mesquite BBQ Spicy Pickle Black Truffle Zesty Jalapeno Black Pepper/Sea Salt',
         price: '2',
         imagePath: 'lib/images/chips.png'),
     Food(
@@ -97,82 +97,96 @@ class _MenuPageState extends State<MenuPage> {
     Food(
         name: 'Cheesecake',
         description:
-            'Decadent New York Style Cheesecake with your choice of blackberry sauce or chocolate.',
+            'Decadent New York style cheesecake with your choice of blackberry sauce or chocolate.',
         price: '5',
         imagePath: 'lib/images/cheesecake.png')
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: Text(
-            "Mains",
-            style: GoogleFonts.poiretOne(
-              fontWeight: FontWeight.bold,
-              color: Colors.amber.shade600,
-              fontSize: 48,
+    return PageView(
+      pageSnapping: true,
+      scrollDirection: Axis.vertical,
+      children: [
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Text(
+                "Mains",
+                style: GoogleFonts.poiretOne(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber.shade600,
+                  fontSize: 48,
+                ),
+              ),
             ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: SizedBox(
-            height: 650,
-            child: PageView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: foodMenu.length,
-                itemBuilder: (context, index) =>
-                    FoodTile(food: foodMenu[index])),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: Text(
-            "Sides",
-            style: GoogleFonts.poiretOne(
-              fontWeight: FontWeight.bold,
-              color: Colors.amber.shade600,
-              fontSize: 48,
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: SizedBox(
+                height: 600,
+                child: PageView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: foodMenu.length,
+                    itemBuilder: (context, index) =>
+                        FoodTile(food: foodMenu[index])),
+              ),
             ),
-          ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: SizedBox(
-            height: 700,
-            child: PageView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: sidesMenu.length,
-                itemBuilder: (context, index) =>
-                    FoodTile(food: sidesMenu[index])),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: Text(
-            "Desserts",
-            style: GoogleFonts.poiretOne(
-              fontWeight: FontWeight.bold,
-              color: Colors.amber.shade600,
-              fontSize: 48,
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Text(
+                "Sides",
+                style: GoogleFonts.poiretOne(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber.shade600,
+                  fontSize: 48,
+                ),
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: SizedBox(
+                height: 600,
+                child: PageView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: sidesMenu.length,
+                    itemBuilder: (context, index) =>
+                        FoodTile(food: sidesMenu[index])),
+              ),
+            ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: SizedBox(
-            height: 700,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: dessertsMenu.length,
-                itemBuilder: (context, index) =>
-                    FoodTile(food: dessertsMenu[index])),
-          ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Text(
+                "Desserts",
+                style: GoogleFonts.poiretOne(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber.shade600,
+                  fontSize: 48,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: SizedBox(
+                height: 600,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: dessertsMenu.length,
+                    itemBuilder: (context, index) =>
+                        FoodTile(food: dessertsMenu[index])),
+              ),
+            ),
+          ],
         ),
-      ]),
+      ],
     );
   }
 }
