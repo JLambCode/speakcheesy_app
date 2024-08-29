@@ -105,7 +105,6 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: ListView(children: [
         Padding(
           padding: const EdgeInsets.only(left: 15.0),

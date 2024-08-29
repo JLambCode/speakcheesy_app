@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../models/food.dart';
+import '../models/reward.dart';
 
-class FoodTile extends StatelessWidget {
-  final Food food;
-  const FoodTile({super.key, required this.food});
+class RewardTile extends StatelessWidget {
+  final Reward reward;
+  const RewardTile({super.key, required this.reward});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class FoodTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            food.name,
+            reward.name,
             style: GoogleFonts.poiretOne(
                 fontSize: 30, fontWeight: FontWeight.bold),
           ),
@@ -31,7 +31,7 @@ class FoodTile extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                  food.imagePath,
+                  reward.imagePath,
                   fit: BoxFit.cover,
                   height: 300,
                 ),
@@ -41,29 +41,12 @@ class FoodTile extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              food.description,
+              reward.description,
               style: GoogleFonts.poiretOne(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
               softWrap: true,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: SizedBox(
-              width: 160,
-              child: Row(
-                children: [
-                  Text(
-                    '\$ ${food.price}',
-                    style: GoogleFonts.poiretOne(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  )
-                ],
-              ),
             ),
           ),
         ],

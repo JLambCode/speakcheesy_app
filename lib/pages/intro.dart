@@ -8,7 +8,6 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(

@@ -87,14 +87,14 @@ class CreateAccount extends StatelessWidget {
               padding: const EdgeInsets.only(top: 3, left: 3),
               child: ElevatedButton(
                 onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  shape: const RoundedRectangleBorder(),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  backgroundColor: Colors.amber.shade600,
+                ),
                 child: const Text(
                   "Sign up",
                   style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: Colors.amber.shade600,
                 ),
               )),
           Container(
@@ -104,12 +104,12 @@ class CreateAccount extends StatelessWidget {
               border: Border.all(
                 color: Colors.amber,
               ),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black,
                   spreadRadius: 1,
                   blurRadius: 1,
-                  offset: const Offset(0, 1), // changes position of shadow
+                  offset: Offset(0, 1), // changes position of shadow
                 ),
               ],
             ),

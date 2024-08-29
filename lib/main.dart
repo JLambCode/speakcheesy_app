@@ -46,23 +46,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int screenIndex = 0;
-
-  static const List<Widget> _pages = <Widget>[
-    LandingPage(),
-    MenuPage(),
-    RewardsPage(),
-    SchedulePage(),
-    LocationPage(),
-    MemberPage(),
-  ];
-
-  void handleScreenChanged(int selectedScreen) {
-    setState(() {
-      screenIndex = selectedScreen;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,8 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: PageView(
           controller: controller,
-          physics: NeverScrollableScrollPhysics(),
-          children: [
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
             LandingPage(),
             MenuPage(),
             RewardsPage(),
